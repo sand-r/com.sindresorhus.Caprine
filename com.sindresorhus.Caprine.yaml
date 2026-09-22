@@ -29,6 +29,11 @@ finish-args:
   # Required for notifications in various desktop environments
   - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.kde.StatusNotifierWatcher
+  # Electron 38+ draws the tray icon with Chromium's own StatusNotifierItem,
+  # which must own org.freedesktop.StatusNotifierItem-<pid>-<id>. The browser
+  # process is always PID 2 inside the sandbox. Without this the icon can't be
+  # registered and the main window never appears.
+  - --own-name=org.freedesktop.StatusNotifierItem-2-1
 
 # Enable node extension by adding it to path
 build-options:
