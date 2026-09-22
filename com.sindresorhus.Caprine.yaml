@@ -1,10 +1,10 @@
 app-id: com.sindresorhus.Caprine
 runtime: org.freedesktop.Platform
-runtime-version: '25.08'
+runtime-version: '26.08'
 sdk: org.freedesktop.Sdk
 
 base: org.electronjs.Electron2.BaseApp
-base-version: '25.08'
+base-version: '26.08'
 
 sdk-extensions:
   - org.freedesktop.Sdk.Extension.node22
@@ -59,14 +59,10 @@ modules:
     subdir: main
     sources:
       - type: git
-        url: https://github.com/sindresorhus/caprine
-        tag: v2.61.0
-        commit: c3cbcf94e0c2f964fc9a709a8192625e57ce5206
+        url: https://github.com/bankjaneo/caprine
+        branch: facebook-migrate
+        commit: a2576389825b4066a297856fa8f4ccdca0a45a39
         dest: main
-        x-checker-data:
-          type: git
-          tag-pattern: ^v([\d.]+)$
-          version-scheme: semantic
       - type: script
         dest-filename: caprine.sh
         commands:

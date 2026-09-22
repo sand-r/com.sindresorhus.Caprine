@@ -42,6 +42,43 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.61.25" date="2026-09-21">
+      <description>
+        <p>What's New (PR facebook-migrate build)</p>
+        <ul>
+          <li>Update Electron from 29 to 43</li>
+          <li>Fix clipped and unresponsive media viewer controls</li>
+          <li>Fix photo downloads saved without a name or extension</li>
+          <li>Add vertical margins to media viewer photos</li>
+          <li>Deduplicate notification-mute handlers and shared menu items</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.61.24" date="2026-06-06">
+      <description>
+        <p>What's New (PR facebook-migrate build)</p>
+        <ul>
+          <li>Allow 2FA authentication flow to complete within the app</li>
+          <li>Fix notifications across platforms; reduce badge clearing delay to 2s</li>
+          <li>Open profile links in external browser from context menu and messages page</li>
+          <li>Text-size zoom applies to conversation list and chat; Linux/GNOME zoom shortcuts</li>
+          <li>Fix menubar conversation navigation, view selectors, and toast notification click</li>
+          <li>Fix scrollbar color and chat panel padding</li>
+        </ul>
+      </description>
+    </release>
+    <release version="2.61.1" date="2026-02-23">
+      <description>
+        <p>What's New</p>
+        <ul>
+          <li>Migrate from messenger.com to facebook.com/messages</li>
+          <li>Fix notifications, dock badge, and unread count</li>
+          <li>Fix menu bar items (Mute, Archive, Delete)</li>
+          <li>Custom Facebook Messenger notification sound</li>
+          <li>Fix Linux window size not persisting across sessions</li>
+        </ul>
+      </description>
+    </release>
     <release version="2.61.0" date="2026-01-03">
       <description>
         <p>What's Fixed</p>
