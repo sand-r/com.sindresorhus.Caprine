@@ -65,8 +65,11 @@ modules:
     sources:
       - type: git
         url: https://github.com/bankjaneo/caprine
-        branch: facebook-migrate
-        commit: a2576389825b4066a297856fa8f4ccdca0a45a39
+        tag: v2.62.0
+        commit: 51c3b5b2d9099b0899feb483a0ae5130f9fd3990
+        dest: main
+      - type: patch
+        path: caprine-tray-dedupe.patch
         dest: main
       - type: script
         dest-filename: caprine.sh

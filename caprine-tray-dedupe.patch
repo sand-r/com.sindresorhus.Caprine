@@ -1,0 +1,62 @@
+diff --git a/source/tray.ts b/source/tray.ts
+--- a/source/tray.ts
++++ b/source/tray.ts
+@@ -12,6 +12,10 @@
+ 
+ let tray: Tray | undefined;
+ let previousMessageCount = 0;
++// Icon currently shown. Chromium's StatusNotifierItem emits NewIcon (and the
++// tray host re-fetches the pixmap and redraws) on every setImage(), even with
++// the same file, and the unread badge is re-applied on every 1 s poll.
++let currentIconPath: string | undefined;
+ 
+ let contextMenu: Menu;
+ 
+@@ -93,7 +97,8 @@
+ 			},
+ 		]);
+ 
+-		tray = new Tray(getIconPath(false));
++		currentIconPath = getIconPath(false);
++		tray = new Tray(currentIconPath);
+ 
+ 		tray.setContextMenu(contextMenu);
+ 
+@@ -117,6 +122,7 @@
+ 		setTimeout(() => {
+ 			tray?.destroy();
+ 			tray = undefined;
++			currentIconPath = undefined;
+ 		}, 500);
+ 	},
+ 
+@@ -133,7 +139,7 @@
+ 		}
+ 
+ 		previousMessageCount = messageCount;
+-		tray.setImage(getIconPath(shouldShowUnread));
++		setTrayImage(getIconPath(shouldShowUnread));
+ 		updateToolTip(messageCount);
+ 	},
+ 
+@@ -142,10 +148,19 @@
+ 			return;
+ 		}
+ 
+-		tray.setImage(getIconPath(shouldDisplayUnread));
++		setTrayImage(getIconPath(shouldDisplayUnread));
+ 	},
+ };
+ 
++function setTrayImage(iconPath: string): void {
++	if (!tray || iconPath === currentIconPath) {
++		return;
++	}
++
++	currentIconPath = iconPath;
++	tray.setImage(iconPath);
++}
++
+ function updateToolTip(counter: number): void {
+ 	if (!tray) {
+ 		return;
